@@ -1,37 +1,33 @@
-const { Socket } = require("dgram")
-const net = require("net")
+const net = require("net");
 
-PORTA = 8000
-HOST = "127.0.0.1"
+PORTA = 8000;
+HOST = "127.0.0.1";
 
+const cliente = new net.Socket();
 
-const cliente = new net.Socket()
-
-const readLine = require("readline")
+const readLine = require("readline");
 
 const rl = readLine.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-})
+  input: process.stdin,
+  output: process.stdout,
+});
 
-lista_de_carrinho = []
+lista_de_carrinho = [];
 
-const conexaoListener = async () => { 
-    console.log("Conectado ao servidor, use help para ver comandos");
+const conexaoListener = async () => {
+  console.log("Conectado ao servidor, use help para ver comandos");
 
-    cliente.on("data", (data) => {
-        /**
-         * Ouvir as respostas do servidor
-         */
-        const dataString = data.toString();
-        console.log("Responsta do servidor: " + dataString)
-    })
-    
+  cliente.on("data", (data) => {
+    /**
+     * Ouvir as respostas do servidor
+     */
+    const dataString = data.toString();
+    console.log("Resposta do servidor: " + dataString);
+  });
 
-    rl.addListener("line", line => { 
-        cliente.write(line)
-    })
-    
-}
+  rl.addListener("line", (line) => {
+    cliente.write(line);
+  });
+};
 
-cliente.connect(PORTA, HOST, conexaoListener)
+cliente.connect(PORTA, HOST, conexaoListener);
