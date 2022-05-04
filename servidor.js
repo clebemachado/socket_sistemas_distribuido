@@ -46,6 +46,9 @@ const conexaoListener = (socket) => {
         help += "Ex: add_prod feijao 20.0 5\n";
         help += "Listar produtos, cmd:list -p[]\n";
         help += "Adicionar no carrinhos, cmd: add_c -p[id:int, qtd: int]\n";
+        help += "Remover do carrinho, cmd: rem_c -p[id:int]\n";
+        help += "Pagar, cmd: pagar -p[valor:number]\n";
+        help += "Solicitar Entrega, cmd: entregar\n";
         socket.write("\n" + help);
         break;
 
