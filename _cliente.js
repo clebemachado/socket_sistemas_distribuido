@@ -15,7 +15,7 @@ const rl = readLine.createInterface({
 lista_de_carrinho = [];
 
 const conexaoListener = async () => {
-  console.log("Conectado ao servidor, use help para ver comandos");
+  console.log("Conectado ao servidor, use help para visualizar os comandos.");
 
   cliente.on("data", (data) => {
     /**
@@ -26,7 +26,13 @@ const conexaoListener = async () => {
   });
 
   rl.addListener("line", (line) => {
-    cliente.write(line);
+    if (line == "clear") {
+      console.clear()
+    } else { 
+      console.clear()
+      cliente.write(line);
+    }
+    
   });
 };
 
