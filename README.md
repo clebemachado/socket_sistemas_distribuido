@@ -3,7 +3,7 @@
 ## Componentes 👥:
 
 - Clebson Mendonça Machado da Silva
-- Luís Felipe da Silva Santos
+- Luíz Felipe Silva Santos
 
 ---
 
